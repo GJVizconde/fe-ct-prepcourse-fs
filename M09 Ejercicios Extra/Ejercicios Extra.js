@@ -6,6 +6,15 @@ function deObjetoAarray(objeto) {
    // Estos elementos debe ser cada par clave:valor del objeto recibido.
    // [EJEMPLO]: {D: 1, B: 2, C: 3} ---> [['D', 1], ['B', 2], ['C', 3]].
    // Tu código:
+
+   var array = [];
+
+   for (var clave in objeto ){
+      array.push([clave, objeto[clave]]);
+   }
+
+   return array; 
+      
 }
 
 function numberOfCharacters(string) {
@@ -14,6 +23,20 @@ function numberOfCharacters(string) {
    // Las letras deben estar en orden alfabético.
    // [EJEMPLO]: "adsjfdsfsfjsdjfhacabcsbajda" ---> { a: 5, b: 2, c: 2, d: 4, f: 4, h:1, j: 4, s: 5 }
    // Tu código:
+
+   var objeto = {};
+   var array = string.split('');
+   var ordenado = array.sort();
+
+   for (var letra of ordenado){
+      if(!objeto[letra]){
+         objeto[letra] = 1;
+      }else{
+         objeto[letra] = objeto[letra] + 1;
+      }
+   }
+
+   return objeto;
 }
 
 function capToFront(string) {
@@ -22,6 +45,23 @@ function capToFront(string) {
    // Retornar el string.
    // [EJEMPLO]: soyHENRY ---> HENRYsoy
    // Tu código:
+
+   let arreglo = string.split('');
+   let arrayMayus = [];
+   let arrayMinus = [];
+   
+   for(var letra of arreglo ){
+      if(letra === letra.toUpperCase()){
+         arrayMayus.push(letra);
+      }else{
+         arrayMinus.push(letra);
+      }
+   }
+
+   let nuevoString = (arrayMayus.concat(arrayMinus)).join('');
+
+   return nuevoString;
+ 
 }
 
 function asAmirror(frase) {
@@ -29,12 +69,37 @@ function asAmirror(frase) {
    // La diferencia es que cada palabra estará escrita al inverso.
    // [EJEMPLO]: "The Henry Challenge is close!"  ---> "ehT yrneH egnellahC si !esolc"
    // Tu código:
+
+   let palabras = frase.split(' ');
+   let newPhrase = ''
+
+   for(let i = 0; i < palabras.length; i++){
+
+      if(i !== 0){
+         newPhrase +=' ' + palabras[i].split('').reverse().join('');
+      }else{
+         newPhrase += palabras[i].split('').reverse().join('');
+      }
+     
+   }
+
+   return newPhrase;
+   
 }
 
 function capicua(numero) {
    // Si el número que recibes es capicúa debes retornar el string: "Es capicua".
    // Caso contrario: "No es capicua".
    // Tu código:
+
+   let palabra = numero.toString().split('');
+   let alrevez = numero.toString().split('').reverse();
+
+   if(alrevez === palabra){
+      return 'Es capicua';
+   }else{
+      return 'No es capicua';
+   }
 }
 
 function deleteAbc(string) {
